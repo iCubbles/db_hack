@@ -1,14 +1,22 @@
 result-table {
   display: block;
   width: 100%;
-  border: 1px solid gray; }
+  font-family: Verdana,Geneva,sans-serif; }
 
 result-table .container {
   display: flex;
   flex-direction: column; }
 
 result-table .row {
-  display: flex; }
+  display: flex;
+  padding: 5px; }
+
+result-table .row.header {
+  text-align: center;
+  font-weight: bold; }
+
+result-table .row:nth-child(odd) {
+  background-color: #f2f2f2; }
 
 result-table .flex-1 {
   flex: 1; }
@@ -24,3 +32,6 @@ result-table .flex-4 {
 
 result-table .flex-5 {
   flex: 5; }
+
+result-table .align-right {
+  text-align: right; }

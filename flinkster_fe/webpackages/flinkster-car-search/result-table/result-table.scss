@@ -1,7 +1,8 @@
 result-table {
     display: block;
     width: 100%;
-    border: 1px solid gray;
+    // border: 1px solid gray;
+    font-family: Verdana,Geneva,sans-serif;
     
     .container {
         display: flex;
@@ -10,7 +11,14 @@ result-table {
 
     .row {
         display: flex;
-        
+        padding: 5px;
+        &.header {
+            text-align: center;
+            font-weight: bold;
+        }
+        &:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
     }
 
     .flex-1 {
@@ -31,5 +39,9 @@ result-table {
 
     .flex-5 {
         flex: 5;
+    }
+
+    .align-right {
+        text-align: right;
     }
 }

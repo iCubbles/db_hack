@@ -10,10 +10,16 @@
     is: 'result-table',
 
     templates: {
-      row:  '{{#items}}' + 
+      row:  '<div class="row header">'+
+              '<div class="flex-2">Name</div>' +
+              '<div class="flex-2">Beschreibung</div>' +
+              '<div class="flex-1">Entfernung</div>' +
+            '</div>' +
+            '{{#items}}' + 
               '<div class="row">' +
-                '<div class="flex-1 label">{{name}}</div>' +
-                '<div class="flex-4">{{description}}</div>' +
+                '<div class="flex-2 label">{{name}}</div>' +
+                '<div class="flex-2">{{description}}</div>' +
+                '<div class="flex-1 align-right">{{distance}}&nbsp;m</div>' +
               '</div>' +
             '{{/items}}'
     },
