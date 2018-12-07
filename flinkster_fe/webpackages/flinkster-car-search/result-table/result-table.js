@@ -74,7 +74,11 @@
         while (current !== this) {
           if (current.hasAttribute('data-uuid')) {
             uuid = current.getAttribute('data-uuid');
-            this._selectItemByUuid(uuid);
+            if (this.model.selectedItem && this.model.selectedItem.uuid === uuid) {
+              this._deselectItems();
+            } else {
+              this._selectItemByUuid(uuid);
+            }
             break;
           } else {
             current = current.parentNode;
@@ -92,6 +96,13 @@
           this.$$(`[data-uuid="${item.uuid}"]`).classList.remove('selected');
         } 
       }.bind(this));
+    },
+
+    _deselectItems: function () {
+      this.model.rentalObjects.forEach(({ uuid }) => {
+        this.setSelectedItem(null);
+        this.$$(`[data-uuid="${uuid}"]`).classList.remove('selected')
+      });
     }
   });
 }());
