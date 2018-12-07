@@ -18,6 +18,11 @@ result-table .row.header {
 result-table .row:nth-child(odd) {
   background-color: #f2f2f2; }
 
+result-table .row.selected {
+  background-color: #f01414 !important;
+  color: #ffffff;
+  font-weight: bold; }
+
 result-table .flex-1 {
   flex: 1; }
 

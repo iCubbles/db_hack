@@ -19,6 +19,11 @@ result-table {
         &:nth-child(odd) {
             background-color: #f2f2f2;
         }
+        &.selected {
+            background-color:  #f01414 !important;
+            color: #ffffff;
+            font-weight: bold;
+        }
     }
 
     .flex-1 {

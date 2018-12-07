@@ -16,7 +16,7 @@
               '<div class="flex-1">Entfernung</div>' +
             '</div>' +
             '{{#items}}' + 
-              '<div class="row">' +
+              '<div class="row" data-uuid="{{uuid}}">' +
                 '<div class="flex-2 label">{{name}}</div>' +
                 '<div class="flex-2">{{description}}</div>' +
                 '<div class="flex-1 align-right">{{distance}}&nbsp;m</div>' +
@@ -47,6 +47,7 @@
      */
     cubxReady: function () {
       this.cubxReady = true;
+      this._registerSelectListener();
     },
 
     /**
@@ -63,6 +64,34 @@
       let parent = this.$$('.data-table');
 
       parent.innerHTML = Mustache.render(this.templates.row, { items });
+    },
+
+    _registerSelectListener: function () {
+      this.addEventListener('click', function (event) {
+        let current = event.target;
+        let uuid = null;
+        
+        while (current !== this) {
+          if (current.hasAttribute('data-uuid')) {
+            uuid = current.getAttribute('data-uuid');
+            this._selectItemByUuid(uuid);
+            break;
+          } else {
+            current = current.parentNode;
+          }
+        }
+      }.bind(this));
+    },
+
+    _selectItemByUuid: function (uuid) {
+      this.model.rentalObjects.forEach(function (item) {
+        if (item.uuid === uuid) {
+          this.$$(`[data-uuid="${item.uuid}"]`).classList.add('selected');
+          this.setSelectedItem(item);
+        } else {
+          this.$$(`[data-uuid="${item.uuid}"]`).classList.remove('selected');
+        } 
+      }.bind(this));
     }
   });
 }());
