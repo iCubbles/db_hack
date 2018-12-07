@@ -1,0 +1,66 @@
+{
+  "name": "flinkster-car-search",
+  "groupId": "",
+  "version": "0.1.0-SNAPSHOT",
+  "modelVersion": "9.1.2",
+  "docType": "webpackage",
+  "author": {
+    "name": "Philipp Wagner",
+    "email": "wagner@getrequest.de"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "man": [],
+  "artifacts": {
+    "apps": [
+      {
+        "artifactId": "docs",
+        "description": "Generated webpackage documentation.",
+        "runnables": [
+          {
+            "name": "docs",
+            "path": "/index.html",
+            "description": "Show the interface of this component."
+          }
+        ]
+      }
+    ],
+    "elementaryComponents": [
+      {
+        "artifactId": "my-comp",
+        "description": "This is an elementary-component based on Polymer.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/docs/index.html",
+            "description": "Show the interface of this component."
+          }
+        ],
+        "resources": [
+          "my-comp.css",
+          "my-comp.html"
+        ],
+        "dependencies": [
+          {
+            "webpackageId": "cubx.core.rte@2.5.2",
+            "artifactId": "cubxpolymer"
+          }
+        ],
+        "slots": [
+          {
+            "name": "value0",
+            "direction": [ "input" ],
+            "value": "test"
+          }
+        ]
+      }
+    ],
+    "compoundComponents": [],
+    "utilities": []
+  }
+}

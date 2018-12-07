@@ -1,0 +1,17 @@
+{
+  "uploadConfigs": {
+    "dryRun": {
+      "url": "https://cubbles.world/sandbox",
+      "proxy": "",
+      "dryRun": true
+    },
+    "local": {
+      "url": "http://cubbles-base-local/sandbox",
+      "proxy": ""
+    },
+    "release": {
+      "url": "https://cubbles.world/sandbox",
+      "proxy": ""
+    }
+  }
+}
