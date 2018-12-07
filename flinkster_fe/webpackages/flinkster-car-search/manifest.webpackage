@@ -27,7 +27,7 @@
     ],
     "elementaryComponents": [
       {
-        "artifactId": "my-comp",
+        "artifactId": "result-table",
         "description": "This is an elementary-component based on Polymer.",
         "runnables": [
           {
@@ -42,20 +42,31 @@
           }
         ],
         "resources": [
-          "my-comp.css",
-          "my-comp.html"
+          "result-table.css",
+          "result-table.html"
         ],
         "dependencies": [
           {
             "webpackageId": "cubx.core.rte@2.5.2",
             "artifactId": "cubxpolymer"
+          },
+          {
+            "webpackageId": "mustache-2.2.1@1.1.0",
+            "artifactId": "mustache"
           }
         ],
         "slots": [
           {
-            "name": "value0",
+            "slotId": "rentalObjects",
+            "type": "array",
             "direction": [ "input" ],
-            "value": "test"
+            "description": "Provide the list of rentalobject to be displayed"
+          },
+          {
+            "slotId": "selectedItem",
+            "type": "object",
+            "direction": [ "output" ],
+            "description": "Selected rentalObject"
           }
         ]
       }

@@ -1,0 +1,26 @@
+result-table {
+  display: block;
+  width: 100%;
+  border: 1px solid gray; }
+
+result-table .container {
+  display: flex;
+  flex-direction: column; }
+
+result-table .row {
+  display: flex; }
+
+result-table .flex-1 {
+  flex: 1; }
+
+result-table .flex-2 {
+  flex: 2; }
+
+result-table .flex-3 {
+  flex: 3; }
+
+result-table .flex-4 {
+  flex: 4; }
+
+result-table .flex-5 {
+  flex: 5; }

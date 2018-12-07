@@ -7,7 +7,16 @@
    *
    */
   CubxPolymer({
-    is: 'my-comp',
+    is: 'result-table',
+
+    templates: {
+      row:  '{{#items}}' + 
+              '<div class="row">' +
+                '<div class="flex-1 label">{{name}}</div>' +
+                '<div class="flex-4">{{description}}</div>' +
+              '</div>' +
+            '{{/items}}'
+    },
 
     /**
      * Manipulate an element’s local DOM when the element is created.
@@ -31,11 +40,23 @@
      * Manipulate an element’s local DOM when the cubbles framework is initialized and ready to work.
      */
     cubxReady: function () {
-    }
+      this.cubxReady = true;
+    },
 
     /**
      *  Observe the Cubbles-Component-Model: If value for slot 'slotName' has changed ...
      */
-    // modelSlotNameChanged: function (newValue) {}
+    modelRentalObjectsChanged: function (rentalObjects) {
+      if (this.cubxReady) {
+        this._render();
+      }
+    },
+
+    _render: function () {
+      const items = this.model.rentalObjects;
+      let parent = this.$$('.data-table');
+
+      parent.innerHTML = Mustache.render(this.templates.row, { items });
+    }
   });
 }());

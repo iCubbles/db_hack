@@ -7,6 +7,9 @@
     "node": ">= 8.11.1",
     "npm": ">= 6.0.1"
   },
+  "scripts": {
+    "watch-sass": "node-sass -w -r ../webpackages/flinkster-car-search/ -o ../webpackages/flinkster-car-search/"
+  },
   "dependencies": {
     "chalk": "~1.1.0",
     "cubx-grunt-generate-webpackage-readme-file": "^1.0.0",
@@ -43,6 +46,7 @@
     "grunt-jsonlint": "^1.1.0",
     "gruntify-eslint": "^4.0.0",
     "http-proxy-middleware": "0.15.1",
+    "node-sass": "^4.10.0",
     "standard": "^10.0.3"
   },
   "repository": {
