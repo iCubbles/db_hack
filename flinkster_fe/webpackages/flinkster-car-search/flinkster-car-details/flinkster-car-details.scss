@@ -2,17 +2,20 @@ flinkster-car-details {
     display: block;
     width: 100%;
     font-family: Verdana,Geneva,sans-serif;
+    font-size: 16px;
 
     .car-detail-label {
         background-color:  #f01414 !important;
         color: #ffffff;
         font-weight: bold;
         padding: 5px;
+        text-align: left;
     }
 
     .car-detail-text {
         background-color: #f2f2f2;
         padding: 5px;
+        text-align: left;
     }
 
     .flex-container {

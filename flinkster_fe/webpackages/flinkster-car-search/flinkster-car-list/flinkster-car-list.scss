@@ -3,6 +3,7 @@ flinkster-car-list {
     width: 100%; 
     // border: 1px solid gray;
     font-family: Verdana,Geneva,sans-serif;
+    font-size: 16px;
     
     .data-table-container {
         display: flex;
@@ -12,6 +13,8 @@ flinkster-car-list {
     .data-table-row {
         display: flex;
         padding: 5px;
+        text-align: left;
+
         &.header {
             text-align: center;
             font-weight: bold;

@@ -1,24 +1,35 @@
 flinkster-car-details {
   display: block;
   width: 100%;
-  font-family: Verdana,Geneva,sans-serif; }
-  flinkster-car-details .car-detail-label {
-    background-color: #f01414 !important;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 5px; }
-  flinkster-car-details .car-detail-text {
-    background-color: #f2f2f2;
-    padding: 5px; }
-  flinkster-car-details .flex-container {
-    display: flex; }
-  flinkster-car-details .flex-1 {
-    flex: 1; }
-  flinkster-car-details .flex-2 {
-    flex: 2; }
-  flinkster-car-details .flex-3 {
-    flex: 3; }
-  flinkster-car-details .flex-4 {
-    flex: 4; }
-  flinkster-car-details .flex-5 {
-    flex: 5; }
+  font-family: Verdana,Geneva,sans-serif;
+  font-size: 16px; }
+
+flinkster-car-details .car-detail-label {
+  background-color: #f01414 !important;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px;
+  text-align: left; }
+
+flinkster-car-details .car-detail-text {
+  background-color: #f2f2f2;
+  padding: 5px;
+  text-align: left; }
+
+flinkster-car-details .flex-container {
+  display: flex; }
+
+flinkster-car-details .flex-1 {
+  flex: 1; }
+
+flinkster-car-details .flex-2 {
+  flex: 2; }
+
+flinkster-car-details .flex-3 {
+  flex: 3; }
+
+flinkster-car-details .flex-4 {
+  flex: 4; }
+
+flinkster-car-details .flex-5 {
+  flex: 5; }
