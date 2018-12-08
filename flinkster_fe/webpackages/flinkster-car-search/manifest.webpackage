@@ -59,14 +59,52 @@
           {
             "slotId": "rentalObjects",
             "type": "array",
-            "direction": [ "input" ],
+            "direction": [
+              "input"
+            ],
             "description": "Provide the list of rentalobject to be displayed"
           },
           {
             "slotId": "selectedItem",
             "type": "object",
-            "direction": [ "output" ],
+            "direction": [
+              "output"
+            ],
             "description": "Selected rentalObject"
+          }
+        ]
+      },
+      {
+        "artifactId": "flinkster-car-details",
+        "description": "This is an elementary-component based on Polymer.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/docs/index.html",
+            "description": "Show the interface of this component."
+          }
+        ],
+        "resources": [
+          "flinkster-car-details.css",
+          "flinkster-car-details.html"
+        ],
+        "dependencies": [
+          {
+            "webpackageId": "cubx.core.rte@2.5.2",
+            "artifactId": "cubxpolymer"
+          }
+        ],
+        "slots": [
+          {
+            "slotId": "car",
+            "type": "object",
+            "direction": [ "input" ],
+            "description": "Display detail info of a rentable car"
           }
         ]
       }
