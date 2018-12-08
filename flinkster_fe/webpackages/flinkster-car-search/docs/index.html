@@ -26,29 +26,14 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <p>Webcomponents on steroids</p>
-                <flinkster-car-list>
-                    <cubx-core-init>
-                        <cubx-core-slot-init slot="rentalObjects">
-                        [
-                        {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
-                        {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
-                        {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
-                        {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
-                        {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
-                        ]
-                        </cubx-core-slot-init>
-                    </cubx-core-init>
-                    <cubx-core-connections>
-                        <cubx-core-connection
-                            connection-id="slide1-carlist-to-details"
-                            source="selectedItem"
-                            destination="car-details:car">
-                        </cubx-core-connection>
-                    </cubx-core-connections>
-                </flinkster-car-list>
-                
-                <flinkster-car-details id="car-details" style="margin-top:10px;"></flinkster-car-details>
+
+                <section>
+                    <p>Cubbles: Webcomponents on steroids...</p>
+                    <flinkster-find-a-car></flinkster-find-a-car>                
+                </section>
+                <section>
+                        <iframe id="ifSection1" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection1&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-find-a-car'}"></iframe>
+                </section>
             </section>
             <section>
                 <section>
@@ -57,11 +42,11 @@
                         <cubx-core-init>
                             <cubx-core-slot-init slot="rentalObjects">
                                 [
-                                {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
-                                {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
-                                {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
-                                {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
-                                {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
+                                    {"rentalObject": {"uid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI"}, "distance": 154.34},  
+                                    {"rentalObject": {"uid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter"}, "distance": 254.34},  
+                                    {"rentalObject": {"uid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI"}, "distance": 170.73},  
+                                    {"rentalObject": {"uid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI"}, "distance": 229.34},  
+                                    {"rentalObject": {"uid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW langer Radstand"}, "distance": 90.34}
                                 ]
                                 </cubx-core-slot-init>
                             </cubx-core-init>
@@ -69,7 +54,7 @@
                 </section>
                 <section>
                     <!-- <iframe id="myIframe" src="https://cubbles.world/core/rte@2.5.2/iframe/index.html?com.incowia.cubx-webpackage-viewer@1.6.0&amp;manifestUrl=https%3A%2F%2Fcubbles.world%2Fsandbox%2Fflinkster-car-search%400.1.0-SNAPSHOT%2Fmanifest.webpackage&amp;componentArtifactId=flinkster-car-list"></iframe> -->
-                    <iframe id="ifSection1" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection1&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-list'}"></iframe>
+                    <iframe id="ifSection2" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection2&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-list'}"></iframe>
                     <!-- <cubx-component-docs-viewer cubx-webpackage-id="com.incowia.cubx-webpackage-viewer@1.6.0">
                         <cubx-core-init style="display:none">
                             <cubx-core-slot-init slot="manifestUrl">"../manifest.webpackage"</cubx-core-slot-init>
@@ -80,23 +65,26 @@
             </section>
             <section>
                 <section>
-                    <flinkster-car-list>
+                    <p> This is the basic car details element</p>
+                    <flinkster-car-details>
                         <cubx-core-init>
-                            <cubx-core-slot-init slot="rentalObjects">
-                                [
-                                {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
-                                {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
-                                {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
-                                {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
-                                {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
-                                ]
-                                </cubx-core-slot-init>
-                            </cubx-core-init>
-                    </flinkster-car-list>
+                            <cubx-core-slot-init slot="car">
+                                    {"rentalObject": {"uid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter"}, "distance": 254.34}
+                            </cubx-core-slot-init>
+                        </cubx-core-init>
+                    </flinkster-car-details>
                 </section>
                 <section>
-                        <iframe id="ifSection2" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection2&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-list'}"></iframe>
-
+                        <iframe id="ifSection3" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection3&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-details'}"></iframe>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <p> This is the basic search input element</p>
+                    <flinkster-location-select></flinkster-location-select>
+                </section>
+                <section>
+                        <iframe id="ifSection4" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection4&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-location-select'}"></iframe>
                 </section>
             </section>
         </div>
@@ -113,6 +101,14 @@
                     {
                         webpackageId: "flinkster-car-search@0.1.0-SNAPSHOT",
                         artifactId: "flinkster-car-details"
+                    },
+                    {
+                        webpackageId: "flinkster-car-search@0.1.0-SNAPSHOT",
+                        artifactId: "flinkster-find-a-car"
+                    },
+                    {
+                        webpackageId: "flinkster-car-search@0.1.0-SNAPSHOT",
+                        artifactId: "flinkster-location-select"
                     }
                 ]
             }

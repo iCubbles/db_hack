@@ -13,7 +13,7 @@
       row:  '<div class="data-table-row header">'+
               '<div class="flex-2">Name</div>' +
               '<div class="flex-2">Beschreibung</div>' +
-              '<div class="flex-1">Entfernung</div>' +
+              '<div class="flex-1 align-right">Entfernung</div>' +
             '</div>' +
             '{{#items}}' + 
               '<div class="data-table-row" data-uuid="{{rentalObject.uid}}">' +
