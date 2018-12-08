@@ -103,13 +103,146 @@
           {
             "slotId": "car",
             "type": "object",
-            "direction": [ "input" ],
+            "direction": [
+              "input"
+            ],
             "description": "Display detail info of a rentable car"
+          }
+        ]
+      },
+      {
+        "artifactId": "flinkster-request-builder",
+        "description": "This is an elementary-component based on Polymer.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/docs/index.html",
+            "description": "Show the interface of this component."
+          }
+        ],
+        "resources": [
+          "flinkster-request-builder.html"
+        ],
+        "dependencies": [
+          {
+            "webpackageId": "cubx.core.rte@2.5.2",
+            "artifactId": "cubxpolymer"
+          }
+        ],
+        "slots": [
+          {
+            "slotId": "location",
+            "type": "object",
+            "direction": [ "input" ],
+            "description": "Object containing properties lat and lon"
+          },
+          {
+            "slotId": "requestConfig",
+            "type": "object",
+            "direction": [ "output" ],
+            "description": "Axios request config"
           }
         ]
       }
     ],
-    "compoundComponents": [],
+    "compoundComponents": [
+      {
+        "artifactId": "flinkster-find-a-car",
+        "description": "This is a cubbles-compound-component.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/docs/index.html",
+            "description": "Show the interface and dataflow of this component."
+          }
+        ],
+        "resources": [
+          "css/flinkster-find-a-car.css",
+          "flinkster-find-a-car-template.html"
+        ],
+        "dependencies": [
+          {
+            "artifactId": "flinkster-car-list"
+          },
+          {
+            "artifactId": "flinkster-car-details"
+          },
+          {
+            "artifactId": "flinkster-request-builder"
+          },
+          {
+            "webpackageId": "com.incowia.ajax@0.3.0",
+            "artifactId": "ajax-request"
+          }
+        ],
+        "slots": [],
+        "members": [
+          {
+            "memberId": "car-list",
+            "artifactId": "flinkster-car-list"
+          },  
+          {
+            "memberId": "car-details",
+            "artifactId": "flinkster-car-details"
+          },
+          {
+            "memberId": "flinkster-api-proxy",
+            "artifactId": "ajax-request"
+          },
+          {
+            "memberId": "flinkster-api-request-builder",
+            "artifactId": "flinkster-request-builder"
+          }
+        ],
+        "connections": [
+          {
+            "connectionId": "requestBuilderToAjax",
+            "source": {
+              "memberIdRef": "flinkster-api-request-builder",
+              "slot": "requestConfig"
+            },
+            "destination": {
+              "memberIdRef": "flinkster-api-proxy",
+              "slot": "config"
+            }
+          },
+          {
+            "connectionId": "responseToList",
+            "source": {
+              "memberIdRef": "flinkster-api-proxy",
+              "slot": "result"
+            },
+            "destination": {
+              "memberIdRef": "car-list",
+              "slot": "rentalObjects"
+            },
+            "hookFunction": "function (result, next) { result ? next(result.items) : next({}); }"
+          },
+          {
+            "connectionId": "selectedToList",
+            "source": {
+              "memberIdRef": "car-list",
+              "slot": "selectedItem"
+            },
+            "destination": {
+              "memberIdRef": "car-details",
+              "slot": "car"
+            }
+          }
+        ],
+        "inits": []
+      }
+    ],
     "utilities": []
   }
 }

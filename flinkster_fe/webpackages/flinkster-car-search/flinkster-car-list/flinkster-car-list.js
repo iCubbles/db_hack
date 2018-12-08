@@ -16,9 +16,9 @@
               '<div class="flex-1">Entfernung</div>' +
             '</div>' +
             '{{#items}}' + 
-              '<div class="data-table-row" data-uuid="{{uuid}}">' +
-                '<div class="flex-2">{{name}}</div>' +
-                '<div class="flex-2">{{description}}</div>' +
+              '<div class="data-table-row" data-uuid="{{rentalObject.uid}}">' +
+                '<div class="flex-2">{{rentalObject.name}}</div>' +
+                '<div class="flex-2">{{rentalObject.description}}</div>' +
                 '<div class="flex-1 align-right">{{distance}}&nbsp;m</div>' +
               '</div>' +
             '{{/items}}'
@@ -89,19 +89,19 @@
 
     _selectItemByUuid: function (uuid) {
       this.model.rentalObjects.forEach(function (item) {
-        if (item.uuid === uuid) {
-          this.$$(`[data-uuid="${item.uuid}"]`).classList.add('selected');
+        if (item.rentalObject.uid === uuid) {
+          this.$$(`[data-uuid="${item.rentalObject.uid}"]`).classList.add('selected');
           this.setSelectedItem(item);
         } else {
-          this.$$(`[data-uuid="${item.uuid}"]`).classList.remove('selected');
+          this.$$(`[data-uuid="${item.rentalObject.uid}"]`).classList.remove('selected');
         } 
       }.bind(this));
     },
 
     _deselectItems: function () {
-      this.model.rentalObjects.forEach(({ uuid }) => {
+      this.model.rentalObjects.forEach(({ rentalOjbect: uid }) => {
         this.setSelectedItem(null);
-        this.$$(`[data-uuid="${uuid}"]`).classList.remove('selected')
+        this.$$(`[data-uuid="${uid}"]`).classList.remove('selected')
       });
     }
   });
