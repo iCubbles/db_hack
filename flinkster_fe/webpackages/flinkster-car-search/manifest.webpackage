@@ -27,7 +27,7 @@
     ],
     "elementaryComponents": [
       {
-        "artifactId": "result-table",
+        "artifactId": "flinkster-car-list",
         "description": "This is an elementary-component based on Polymer.",
         "runnables": [
           {
@@ -42,8 +42,8 @@
           }
         ],
         "resources": [
-          "result-table.css",
-          "result-table.html"
+          "flinkster-car-list.css",
+          "flinkster-car-list.html"
         ],
         "dependencies": [
           {

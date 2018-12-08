@@ -7,7 +7,7 @@
    *
    */
   CubxPolymer({
-    is: 'result-table',
+    is: 'flinkster-car-list',
 
     templates: {
       row:  '<div class="data-table-row header">'+
