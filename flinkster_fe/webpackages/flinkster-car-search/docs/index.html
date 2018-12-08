@@ -5,22 +5,104 @@
     <meta charset="UTF-8">
     <title>flinkster-car-search generated documentation</title>
 
-    <script src="../../cubx.core.rte@2.2.3/webcomponents-lite/webcomponents-lite.js"></script>
-    <script src="../../cubx.core.rte@2.2.3/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
 
+    <!-- Theme used for syntax highlighting of code -->
+    <!--
+    <link rel="stylesheet" href="lib/css/zenburn.css">-->
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <script src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/webcomponents-lite/webcomponents-lite.js"></script>
+    <script src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
+    <script src="https://cubbles.world/core/cubx.core.rte@2.5.2/iframe-resizer/resize.js"></script>
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <h1>flinkster-car-search generated documentation</h1>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <p> This is the basic result table element</p>
+                    <flinkster-car-list  cubx-webpackage-id="flinkster-car-search@0.1.0-SNAPSHOT">
+                        <cubx-core-init  style="display:none">
+                            <cubx-core-slot-init slot="rentalObjects">
+                                [
+                                {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
+                                {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
+                                {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
+                                {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
+                                {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
+                                ]
+                                </cubx-core-slot-init>
+                            </cubx-core-init>
+                    </flinkster-car-list>
+                </section>
+                <section>
+                    <!-- <iframe id="myIframe" src="https://cubbles.world/core/rte@2.5.2/iframe/index.html?com.incowia.cubx-webpackage-viewer@1.6.0&amp;manifestUrl=https%3A%2F%2Fcubbles.world%2Fsandbox%2Fflinkster-car-search%400.1.0-SNAPSHOT%2Fmanifest.webpackage&amp;componentArtifactId=flinkster-car-list"></iframe> -->
+                    <iframe id="ifSection1" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection1&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-list'}"></iframe>
+                    <!-- <cubx-component-docs-viewer cubx-webpackage-id="com.incowia.cubx-webpackage-viewer@1.6.0">
+                        <cubx-core-init style="display:none">
+                            <cubx-core-slot-init slot="manifestUrl">"../manifest.webpackage"</cubx-core-slot-init>
+                            <cubx-core-slot-init slot="componentArtifactId">"flinkster-car-list"</cubx-core-slot-init>
+                        </cubx-core-init>
+                    </cubx-component-docs-viewer> -->
+                </section>
+            </section>
+            <section>
+                <section>
+                    <flinkster-car-list  cubx-webpackage-id="flinkster-car-search@0.1.0-SNAPSHOT">
+                        <cubx-core-init  style="display:none">
+                            <cubx-core-slot-init slot="rentalObjects">
+                                [
+                                {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
+                                {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
+                                {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
+                                {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
+                                {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
+                                ]
+                                </cubx-core-slot-init>
+                            </cubx-core-init>
+                    </flinkster-car-list>
+                </section>
+                <section>
+                        <iframe id="ifSection2" src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/iframe/index.html?iframe-id=ifSection2&amp;webpackage-id=com.incowia.cubx-webpackage-viewer@1.6.0&amp;artifact-id=cubx-component-docs-viewer&amp;inits={'manifestUrl': 'https://cubbles.world/sandbox/flinkster-car-search@0.1.0-SNAPSHOT', 'componentArtifactId':'flinkster-car-list'}"></iframe>
+
+                </section>
+            </section>
+        </div>
     </div>
-    <div cubx-core-crc class="row">
-        <cubx-webpackage-viewer  cubx-webpackage-id="com.incowia.cubx-webpackage-viewer@1.6.0">
-            <cubx-core-init style="display:none">
-                <cubx-core-slot-init slot="manifestUrl">"../manifest.webpackage"</cubx-core-slot-init>
-            </cubx-core-init>
-        </cubx-webpackage-viewer>
-    </div>
-</div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            width: 960,
+	        height: 700,
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+	// Factor of the display size that should remain empty around the content
+            dependencies: [
+                { src: 'plugin/markdown/marked.js' },
+                { src: 'plugin/markdown/markdown.js' },
+                { src: 'plugin/notes/notes.js', async: true },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
 </body>
+
 </html>
