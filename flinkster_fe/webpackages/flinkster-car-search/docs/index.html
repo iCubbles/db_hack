@@ -20,20 +20,41 @@
         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
-
-    <script src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/webcomponents-lite/webcomponents-lite.js"></script>
-    <script src="https://cubbles.world/sandbox/cubx.core.rte@2.5.2/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
-    <script src="https://cubbles.world/core/cubx.core.rte@2.5.2/iframe-resizer/resize.js"></script>
 </head>
 
 <body>
     <div class="reveal">
         <div class="slides">
             <section>
+                <p>Webcomponents on steroids</p>
+                <flinkster-car-list>
+                    <cubx-core-init>
+                        <cubx-core-slot-init slot="rentalObjects">
+                        [
+                        {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
+                        {"uuid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter", "distance": 254.34},
+                        {"uuid": "3", "name": "Ford Fiesta", "description": "1.0 Benzin 74kW NAVI", "distance": 170.73},
+                        {"uuid": "4", "name": "Opel Corsa", "description": "1,4 Benzin 66kW NAVI", "distance":229.34},
+                        {"uuid": "5", "name": "Ford Transit Custom 9-Sitzer", "description": "2,0 Diesel 77kW, langer Radstand", "distance": 90.34}
+                        ]
+                        </cubx-core-slot-init>
+                    </cubx-core-init>
+                    <cubx-core-connections>
+                        <cubx-core-connection
+                            connection-id="slide1-carlist-to-details"
+                            source="selectedItem"
+                            destination="car-details:car">
+                        </cubx-core-connection>
+                    </cubx-core-connections>
+                </flinkster-car-list>
+                
+                <flinkster-car-details id="car-details" style="margin-top:10px;"></flinkster-car-details>
+            </section>
+            <section>
                 <section>
                     <p> This is the basic result table element</p>
-                    <flinkster-car-list  cubx-webpackage-id="flinkster-car-search@0.1.0-SNAPSHOT">
-                        <cubx-core-init  style="display:none">
+                    <flinkster-car-list>
+                        <cubx-core-init>
                             <cubx-core-slot-init slot="rentalObjects">
                                 [
                                 {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
@@ -59,8 +80,8 @@
             </section>
             <section>
                 <section>
-                    <flinkster-car-list  cubx-webpackage-id="flinkster-car-search@0.1.0-SNAPSHOT">
-                        <cubx-core-init  style="display:none">
+                    <flinkster-car-list>
+                        <cubx-core-init>
                             <cubx-core-slot-init slot="rentalObjects">
                                 [
                                 {"uuid": "1", "name": "Opel Astra Kombi", "description": "1.0 Benzin 77KW NAVI","distance": 154.34},
@@ -80,6 +101,27 @@
             </section>
         </div>
     </div>
+
+    <script>
+        window.cubx = {
+            CRCInit:{
+                rootDependencies: [
+                    {
+                        webpackageId: "flinkster-car-search@0.1.0-SNAPSHOT",
+                        artifactId: "flinkster-car-list"
+                    },
+                    {
+                        webpackageId: "flinkster-car-search@0.1.0-SNAPSHOT",
+                        artifactId: "flinkster-car-details"
+                    }
+                ]
+            }
+        }
+    </script>
+
+    <script src="../../cubx.core.rte@2.5.2/webcomponents-lite/webcomponents-lite.js"></script>
+    <script src="../../cubx.core.rte@2.5.2/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
+    <script src="../../cubx.core.rte@2.5.2/iframe-resizer/resize.js"></script>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
@@ -103,6 +145,12 @@
             ]
         });
     </script>
+
+    <style>
+        cubx-core-init {
+            display: none;
+        }
+    </style>
 </body>
 
 </html>
