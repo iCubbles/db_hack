@@ -43,7 +43,18 @@
     /**
      *  Observe the Cubbles-Component-Model: If value for slot 'slotName' has changed ...
      */
-    modelLocationChanged: function ({lat = '52.523430', lon = '13.411440', radius = 2000} = {}) {
+    modelLocationChanged: function (newValue) {
+      newValue = newValue || {
+        lat: '52.523430',
+        lon: '13.411440' ,
+        radius: 2000
+      };
+      const {
+        lat = '52.523430',
+        lon = '13.411440' ,
+        radius = 2000
+      } = newValue;
+
       const requestConfig = Object.assign({}, this.config, { params: { lat, lon, radius, calcWalkDistance: true }});
       this.setRequestConfig(requestConfig);
     }

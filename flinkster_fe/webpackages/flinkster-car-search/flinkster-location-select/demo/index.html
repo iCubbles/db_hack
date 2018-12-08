@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>&lt;flinkster-car-details&gt; demo</title>
+    <title>&lt;flinkster-location-select&gt; demo</title>
 
     <script src="../../../cubx.core.rte@2.5.2/webcomponents-lite/webcomponents-lite.js"></script>
 
@@ -19,21 +19,7 @@
 </head>
 <body>
 <!--  Place cubbles components there. -->
-<div style="width:50%"></div>
-    <flinkster-car-details cubx-webpackage-id="this">
-        <cubx-core-init>
-            <cubx-core-slot-init slot="car">
-                    {"rentalObject": {"uid": "2", "name": "Ford Mondeo Kombi", "description": "2,0 Diesel 110kW NAVI Automatik festes Trenngitter"}, "distance": 254.34}
-            </cubx-core-slot-init>
-        </cubx-core-init>
-    </flinkster-car-details>
-</div>
+<flinkster-location-select cubx-webpackage-id="this"></flinkster-location-select>
 
 </body>
-
-<style>
-    cubx-core-init {
-        display: none;
-    }
-</style>
 </html>

@@ -138,14 +138,51 @@
           {
             "slotId": "location",
             "type": "object",
-            "direction": [ "input" ],
+            "direction": [
+              "input"
+            ],
             "description": "Object containing properties lat and lon"
           },
           {
             "slotId": "requestConfig",
             "type": "object",
-            "direction": [ "output" ],
+            "direction": [
+              "output"
+            ],
             "description": "Axios request config"
+          }
+        ]
+      },
+      {
+        "artifactId": "flinkster-location-select",
+        "description": "This is an elementary-component based on Polymer.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/docs/index.html",
+            "description": "Show the interface of this component."
+          }
+        ],
+        "resources": [
+          "flinkster-location-select.css",
+          "flinkster-location-select.html"
+        ],
+        "dependencies": [
+          {
+            "webpackageId": "cubx.core.rte@2.5.2",
+            "artifactId": "cubxpolymer"
+          }
+        ],
+        "slots": [
+          {
+            "slotId": "search",
+            "type": "object",
+            "direction": [ "output" ]
           }
         ]
       }
@@ -172,6 +209,9 @@
         ],
         "dependencies": [
           {
+            "artifactId": "flinkster-location-select"
+          },
+          {
             "artifactId": "flinkster-car-list"
           },
           {
@@ -188,9 +228,13 @@
         "slots": [],
         "members": [
           {
+            "memberId": "location-select",
+            "artifactId": "flinkster-location-select"
+          },
+          {
             "memberId": "car-list",
             "artifactId": "flinkster-car-list"
-          },  
+          },
           {
             "memberId": "car-details",
             "artifactId": "flinkster-car-details"
@@ -237,6 +281,17 @@
             "destination": {
               "memberIdRef": "car-details",
               "slot": "car"
+            }
+          },
+          {
+            "connectionId": "locationInput",
+            "source": {
+              "memberIdRef": "location-select",
+              "slot": "search"
+            },
+            "destination": {
+              "memberIdRef": "flinkster-api-request-builder",
+              "slot": "location"
             }
           }
         ],
