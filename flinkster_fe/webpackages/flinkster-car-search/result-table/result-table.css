@@ -3,25 +3,28 @@ result-table {
   width: 100%;
   font-family: Verdana,Geneva,sans-serif; }
 
-result-table .container {
+result-table .data-table-container {
   display: flex;
   flex-direction: column; }
 
-result-table .row {
+result-table .data-table-row {
   display: flex;
   padding: 5px; }
 
-result-table .row.header {
+result-table .data-table-row.header {
   text-align: center;
   font-weight: bold; }
 
-result-table .row:nth-child(odd) {
+result-table .data-table-row:nth-child(odd) {
   background-color: #f2f2f2; }
 
-result-table .row.selected {
+result-table .data-table-row.selected {
   background-color: #f01414 !important;
   color: #ffffff;
   font-weight: bold; }
+
+result-table .data-table-row:hover {
+  cursor: pointer; }
 
 result-table .flex-1 {
   flex: 1; }

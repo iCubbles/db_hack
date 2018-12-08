@@ -4,12 +4,12 @@ result-table {
     // border: 1px solid gray;
     font-family: Verdana,Geneva,sans-serif;
     
-    .container {
+    .data-table-container {
         display: flex;
         flex-direction: column;
     }
 
-    .row {
+    .data-table-row {
         display: flex;
         padding: 5px;
         &.header {
@@ -23,6 +23,9 @@ result-table {
             background-color:  #f01414 !important;
             color: #ffffff;
             font-weight: bold;
+        }
+        &:hover {
+            cursor: pointer;
         }
     }
 

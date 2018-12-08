@@ -10,14 +10,14 @@
     is: 'result-table',
 
     templates: {
-      row:  '<div class="row header">'+
+      row:  '<div class="data-table-row header">'+
               '<div class="flex-2">Name</div>' +
               '<div class="flex-2">Beschreibung</div>' +
               '<div class="flex-1">Entfernung</div>' +
             '</div>' +
             '{{#items}}' + 
-              '<div class="row" data-uuid="{{uuid}}">' +
-                '<div class="flex-2 label">{{name}}</div>' +
+              '<div class="data-table-row" data-uuid="{{uuid}}">' +
+                '<div class="flex-2">{{name}}</div>' +
                 '<div class="flex-2">{{description}}</div>' +
                 '<div class="flex-1 align-right">{{distance}}&nbsp;m</div>' +
               '</div>' +
