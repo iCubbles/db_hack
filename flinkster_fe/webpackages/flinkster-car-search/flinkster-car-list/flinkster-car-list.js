@@ -56,6 +56,11 @@
     modelRentalObjectsChanged: function (rentalObjects) {
       if (this.cubxReady) {
         this._render();
+        
+        //just set first item as selected...
+        if(rentalObjects.length > 0) {
+          this._selectItemByUid(rentalObjects[0].rentalObject.uid);
+        }
       }
     },
 
@@ -77,7 +82,7 @@
             if (this.model.selectedItem && this.model.selectedItem.uuid === uuid) {
               this._deselectItems();
             } else {
-              this._selectItemByUuid(uuid);
+              this._selectItemByUid(uuid);
             }
             break;
           } else {
@@ -87,7 +92,7 @@
       }.bind(this));
     },
 
-    _selectItemByUuid: function (uuid) {
+    _selectItemByUid: function (uuid) {
       this.model.rentalObjects.forEach(function (item) {
         if (item.rentalObject.uid === uuid) {
           this.$$(`[data-uuid="${item.rentalObject.uid}"]`).classList.add('selected');
