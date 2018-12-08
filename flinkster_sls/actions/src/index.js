@@ -3,18 +3,26 @@ const authorization = 'Bearer b4be0828de244da82e6574cf902e38c5'; // by account h
 const ors_apikey = '5b3ce3597851110001cf6248e578d992470742c7a90a961cebca66c3';
 /**
  *
- * @param { lat, lon, radius}
+ * @param { object } param0
  *
  * radius: in meter (max. 10.000)
  */
 async function main({ lat = '52.523430', lon = '13.411440', radius = 1000, calcWalkDistance = false } = {}) {
-    const proposals = await bookingproposals({ lat, lon, radius });
+    const proposals = await bookingproposals(lat, lon, radius);
     let items = proposals.items;
-    await updateDistanceForAll(items, lat, lon, calcWalkDistance);
-    return { items };
+    if (calcWalkDistance) {
+        await updateWalkDistanceForAll(items, lat, lon)
+    } else {
+        updateGeoDistanceForAll(items, lat, lon, calcWalkDistance);
+    }
+    return Promise.resolve(items);
 }
 
-async function bookingproposals({ lat, lon, radius } = {}) {
+/**
+ *
+ * @param {object} param0
+ */
+async function bookingproposals(lat, lon, radius) {
     const options = {
         uri: 'https://api.deutschebahn.com/flinkster-api-ng/v1/bookingproposals',
         qs: {
@@ -29,48 +37,54 @@ async function bookingproposals({ lat, lon, radius } = {}) {
         },
         json: true // Automatically parses the JSON string in the response
     };
-    return rp(options);
+    return await rp(options);
 }
 
 /**
- * @param {} position
- * @param [] items
+ *
+ * @param {array} items
+ * @param {double} lat
+ * @param {double} lon
+ * @param {boolean} calcWalkDistance
  */
-async function updateDistanceForAll(items, lat, lon, calcWalkDistance) {
+function updateGeoDistanceForAll(items, lat, lon) {
     const geodist = require('geodist');
     for (const item of items) {
-        itemLat = item.position.coordinates[1];
         itemLon = item.position.coordinates[0];
+        itemLat = item.position.coordinates[1];
         // calc the distance
-        if (calcWalkDistance) {
-            // note: this request the api of openrouteservice.org
-            try {
-                const routeSummary = await directions({
-                    lat,
-                    lon,
-                    itemLat,
-                    itemLon
-                });
-                item.distance = routeSummary.distance;
-            } catch (error) {
-                console.log(error);
-            }
-        } else {
-            let distance = geodist({ lat, lon }, { lat: itemLat, lon: itemLon }, { exact: true, unit: 'meters' })
-            item.distance = Math.round(distance);
-        }
+        let distance = geodist({ lat, lon }, { lat: itemLat, lon: itemLon }, { exact: true, unit: 'meters' })
+        item.distance = Math.round(distance);
         // add the mapUrl
         item.mapUrl = `https://maps.openrouteservice.org/directions?n1=${lat}&n2=${lon}&n3=14&a=${lat},${lon},${itemLat},${itemLon}&b=2&c=0&g1=-1&g2=0&k1=de-DE&k2=km`
     };
-    return Promise.resolve(items);
+    return items;
+}
+
+async function updateWalkDistanceForAll(items, lat, lon) {
+    const allPromises = [];
+    for (const item of items) {
+        // calc the directions to get the distances
+        allPromises.push(directions(item, lat, lon));
+        // add the mapUrl
+        item.mapUrl = `https://maps.openrouteservice.org/directions?n1=${lat}&n2=${lon}&n3=14&a=${lat},${lon},${itemLat},${itemLon}&b=2&c=0&g1=-1&g2=0&k1=de-DE&k2=km`
+    };
+    return await Promise.all(allPromises);
 }
 
 /**
  * Calculates the direction based on the given positions using openrouteservice.org
+ *
+ * @param {object} item
+ * @param {double} lat
+ * @param {double} lon
+ *
  * @see https://openrouteservice.org/dev/#/api-docs/directions/get
- * @param {*} param
  */
-async function directions({ lat, lon, itemLat, itemLon } = {}) {
+async function directions(item, lat, lon) {
+    //console.log(item)
+    const itemLat = item.position.coordinates[1];
+    const itemLon = item.position.coordinates[0];
     const options = {
         uri: 'https://api.openrouteservice.org/directions',
         qs: {
@@ -78,16 +92,15 @@ async function directions({ lat, lon, itemLat, itemLon } = {}) {
             coordinates: `${lon},${lat}|${itemLon},${itemLat}`,
             profile: 'foot-walking'
         },
-        json: true // Automatically parses the JSON string in the response
+        json: true
     };
     try {
-        console.log('openrouteservice options: ' + JSON.stringify(options));
+        //console.log('openrouteservice options: ' + JSON.stringify(options));
         const result = await rp(options);
-        // console.log('openrouteservice result: ' + result);
-        return Promise.resolve({
-            distance: Math.round(result.routes[0].summary.distance),
-            duration: result.routes[0].summary.duration
-        })
+        item.distance = Math.round(result.routes[0].summary.distance);
+        item.duration = result.routes[0].summary.duration;
+        item.mapUrl = `https://maps.openrouteservice.org/directions?n1=${lat}&n2=${lon}&n3=14&a=${lat},${lon},${itemLat},${itemLon}&b=2&c=0&g1=-1&g2=0&k1=de-DE&k2=km`
+        return Promise.resolve(item);
     } catch (error) {
         return Promise.reject(error.message);
     }
