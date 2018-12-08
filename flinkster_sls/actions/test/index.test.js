@@ -4,7 +4,8 @@ const index = require('../src/index');
 describe('asserts', () => {
 
   it('check booking proposals', async () => {
-    const items = await index.main({ radius: 10000 })
+    const result = await index.main({ radius: 10000 });
+    const items = result.items;
     //console.log(response);
     const distances = [];
     items.forEach(item => {
@@ -29,7 +30,8 @@ describe('asserts', () => {
   }).timeout(4000);
 
   it('get booking proposals with walkDistance', async () => {
-    const items = await index.main({ calcWalkDistance: true })
+    const result = await index.main({ calcWalkDistance: true })
+    const items = result.items;
     //console.log(response);
     const distances = [];
     items.forEach(item => {

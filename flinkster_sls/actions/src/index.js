@@ -15,7 +15,7 @@ async function main({ lat = '52.523430', lon = '13.411440', radius = 1000, calcW
     } else {
         updateGeoDistanceForAll(items, lat, lon, calcWalkDistance);
     }
-    return Promise.resolve(items);
+    return Promise.resolve({items});
 }
 
 /**
@@ -50,8 +50,8 @@ async function bookingproposals(lat, lon, radius) {
 function updateGeoDistanceForAll(items, lat, lon) {
     const geodist = require('geodist');
     for (const item of items) {
-        itemLon = item.position.coordinates[0];
-        itemLat = item.position.coordinates[1];
+        const itemLon = item.position.coordinates[0];
+        const itemLat = item.position.coordinates[1];
         // calc the distance
         let distance = geodist({ lat, lon }, { lat: itemLat, lon: itemLon }, { exact: true, unit: 'meters' })
         item.distance = Math.round(distance);
@@ -67,6 +67,8 @@ async function updateWalkDistanceForAll(items, lat, lon) {
         // calc the directions to get the distances
         allPromises.push(directions(item, lat, lon));
         // add the mapUrl
+        const itemLon = item.position.coordinates[0];
+        const itemLat = item.position.coordinates[1];
         item.mapUrl = `https://maps.openrouteservice.org/directions?n1=${lat}&n2=${lon}&n3=14&a=${lat},${lon},${itemLat},${itemLon}&b=2&c=0&g1=-1&g2=0&k1=de-DE&k2=km`
     };
     return await Promise.all(allPromises);
