@@ -8,7 +8,7 @@
    */
   CubxPolymer({
     is: 'flinkster-request-builder',
-    
+
     config: {
        url: "https://openwhisk.eu-de.bluemix.net/api/v1/web/getrequest_eval/default/dbhack-flinkster.json",
        method: "get"
@@ -55,7 +55,7 @@
         radius = 2000
       } = newValue;
 
-      const requestConfig = Object.assign({}, this.config, { params: { lat, lon, radius, calcWalkDistance: true }});
+      const requestConfig = Object.assign({}, this.config, { params: { lat, lon, radius, calcWalkDistance: false }});
       this.setRequestConfig(requestConfig);
     }
   });
