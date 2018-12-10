@@ -15,7 +15,7 @@ async function main({ lat = '52.523430', lon = '13.411440', radius = 1000, calcW
     } else {
         updateGeoDistanceForAll(items, lat, lon, calcWalkDistance);
     }
-    return Promise.resolve({items});
+    return Promise.resolve({ items });
 }
 
 /**
@@ -37,7 +37,11 @@ async function bookingproposals(lat, lon, radius) {
         },
         json: true // Automatically parses the JSON string in the response
     };
-    return await rp(options);
+    try {
+        return await rp(options);
+    } catch (error) {
+        return Promise.reject(`Request to ${options.uri} responded with error ${error.message}`)
+    }
 }
 
 /**
@@ -104,6 +108,7 @@ async function directions(item, lat, lon) {
         item.mapUrl = `https://maps.openrouteservice.org/directions?n1=${lat}&n2=${lon}&n3=14&a=${lat},${lon},${itemLat},${itemLon}&b=2&c=0&g1=-1&g2=0&k1=de-DE&k2=km`
         return Promise.resolve(item);
     } catch (error) {
+        // TODO: handle Error: the string "429 - {\"error\":\"Rate limit exceeded\"}" was thrown, throw an Error :)
         return Promise.reject(error.message);
     }
 }
